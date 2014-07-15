@@ -22,3 +22,6 @@ class Config(object):
     PAYMENT_URL = PAYMENT_HOST + CHECKOUT_SUFFIX + "/payment.html?code=%s"
 
     DATETIME_FORMAT = '%Y-%m-%dT%H:%M:%S'
+    
+    def __init__(self, **kwargs):
+      BASE_URL = kwargs['BASE_URL'] or BASE_URL
