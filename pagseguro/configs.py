@@ -2,11 +2,21 @@
 
 
 class Config(object):
+    PAGSEGURO_URL = 'https://pagseguro.uol.com.br'
+    PAGSEGURO_WS = 'https://ws.pagseguro.uol.com.br'
+    PAGESEGURO_STC = 'https://stc.pagseguro.uol.com.br'
+    
+    PAGSEGURO_SANDBOX_URL = 'https://pagseguro.uol.com.br'
+    PAGSEGURO_SANDBOX_WS = 'https://ws.pagseguro.uol.com.br'
+    PAGESEGURO_SANDBOX_STC = 'https://stc.pagseguro.uol.com.br'
+    
+    
     def get(self, key, default=None):
         return getattr(self, key, default)
 
     def __init__(self, **kwargs):
-      self.BASE_URL =  kwargs.get('BASE_URL', 'https://ws.pagseguro.uol.com.br')
+      self.use_sandbox = kwargs.get('use_sandbox', False)
+      self.BASE_URL =   if self.use_sandbox PAGSEGURO_SANDBOX_WS else PAGSEGURO_WS
       self.VERSION = "/v2/"
       self.CHECKOUT_SUFFIX = self.VERSION + "checkout"
       self.CHARSET = "UTF-8"  # ISO-8859-1
@@ -19,6 +29,6 @@ class Config(object):
       self.CTYPE = "application/x-www-form-urlencoded; charset={0}".format(self.CHARSET)
       self.HEADERS = {"Content-Type": self.CTYPE}
       self.REFERENCE_PREFIX = "REF%s"
-      self.PAYMENT_HOST = "https://pagseguro.uol.com.br"
+      self.PAYMENT_HOST =  if self.use_sandbox PAGSEGURO_SANDBOX_URL else PAGSEGURO_URL
       self.PAYMENT_URL = self.PAYMENT_HOST + self.CHECKOUT_SUFFIX + "/payment.html?code=%s"
       self.DATETIME_FORMAT = '%Y-%m-%dT%H:%M:%S'
