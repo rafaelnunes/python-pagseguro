@@ -16,7 +16,7 @@ class Config(object):
 
     def __init__(self, **kwargs):
       self.use_sandbox = kwargs.get('use_sandbox', False)
-      self.BASE_URL =   PAGSEGURO_SANDBOX_WS if self.use_sandbox else PAGSEGURO_WS
+      self.BASE_URL =   self.PAGSEGURO_SANDBOX_WS if self.use_sandbox else self.PAGSEGURO_WS
       self.VERSION = "/v2/"
       self.CHECKOUT_SUFFIX = self.VERSION + "checkout"
       self.CHARSET = "UTF-8"  # ISO-8859-1
@@ -29,6 +29,6 @@ class Config(object):
       self.CTYPE = "application/x-www-form-urlencoded; charset={0}".format(self.CHARSET)
       self.HEADERS = {"Content-Type": self.CTYPE}
       self.REFERENCE_PREFIX = "REF%s"
-      self.PAYMENT_HOST =  PAGSEGURO_SANDBOX_URL if self.use_sandbox else PAGSEGURO_URL
+      self.PAYMENT_HOST =  self.PAGSEGURO_SANDBOX_URL if self.use_sandbox else self.PAGSEGURO_URL
       self.PAYMENT_URL = self.PAYMENT_HOST + self.CHECKOUT_SUFFIX + "/payment.html?code=%s"
       self.DATETIME_FORMAT = '%Y-%m-%dT%H:%M:%S'
