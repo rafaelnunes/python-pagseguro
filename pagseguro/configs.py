@@ -6,9 +6,9 @@ class Config(object):
     PAGSEGURO_WS = 'https://ws.pagseguro.uol.com.br'
     PAGESEGURO_STC = 'https://stc.pagseguro.uol.com.br'
     
-    PAGSEGURO_SANDBOX_URL = 'https://pagseguro.uol.com.br'
-    PAGSEGURO_SANDBOX_WS = 'https://ws.pagseguro.uol.com.br'
-    PAGESEGURO_SANDBOX_STC = 'https://stc.pagseguro.uol.com.br'
+    PAGSEGURO_SANDBOX_URL = 'https://sandbox.pagseguro.uol.com.br'
+    PAGSEGURO_SANDBOX_WS = 'https://ws.sandbox.pagseguro.uol.com.br'
+    PAGESEGURO_SANDBOX_STC = 'https://stc.sandbox.pagseguro.uol.com.br'
     
     
     def get(self, key, default=None):
